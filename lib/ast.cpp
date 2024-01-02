@@ -118,8 +118,10 @@ void TreeDefine::printTree(TreeNode root, int level)
 
 void TreeDefine::theCreate(TreeNode root,FILE *Jfile)
 {
+    string tmp;
+    bool   bHasLabel=false;
     if(root!=NULL)
-    {
+    { 
         SHOW_NEWSCP();
         string sym = root->getAttribute()._string;
        // int row =root->getLineNumber();
@@ -134,14 +136,14 @@ void TreeDefine::theCreate(TreeNode root,FILE *Jfile)
         {
            SHOW_NEWSYM(element.name);
            Global_Show.push_back(element.name); 
-           string tmp = ".class public ";
+           tmp = ".class public ";
            tmp+=element.name; 
            tmp+="\n";
            fprintf(Jfile,"%s",tmp.c_str());
            tmp=".super java/lang/Object\n";
            fprintf(Jfile,"%s",tmp.c_str());
 
-           fclose(Jfile);
+           
         }
        
     }
@@ -180,8 +182,16 @@ void TreeDefine::theCreate(TreeNode root,FILE *Jfile)
                 }
             }
 
+            
+
             if(mapping[root->getChildren().at(i)->getNodeType()]=="LABEL")
             {
+                bHasLabel=true;
+                if(bHasLabel)
+                {
+                    tmp="method public static main([Ljava/lang/String;)V\n";
+                    fprintf(Jfile,"%s",tmp.c_str());
+                }
                 New_Label_Check(symbolTable_Q,root->getChildren().at(i));
                 
                 TreeNode tmp = root->getChildren().at(i);
@@ -202,6 +212,22 @@ void TreeDefine::theCreate(TreeNode root,FILE *Jfile)
     SHOW_SYMTAB_HEAD();
     Show_data(symbolTable_Q,Global_Show);
     SHOW_SYMTAB_TAIL();
+
+    //====Jfile=====//
+    if(!bHasLabel)
+    {
+        tmp=".method public static main([Ljava/lang/String;)V\n";
+        fprintf(Jfile,"%s",tmp.c_str());
+        tmp=".limit locals 50\n";
+        fprintf(Jfile,"%s",tmp.c_str());
+        tmp=".limit stack 50\n";
+        fprintf(Jfile,"%s",tmp.c_str());
+    }
+    tmp="    return\n";
+    fprintf(Jfile,"%s",tmp.c_str());
+    tmp=".end method\n";
+    fprintf(Jfile,"%s",tmp.c_str());
+    fclose(Jfile);
     
 }
 
