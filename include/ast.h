@@ -12,6 +12,7 @@
 #include <iomanip>
 #include <unordered_map>
 #include <stack>
+#include <algorithm>
 #endif
 
 
@@ -160,6 +161,24 @@ class TreeDefine
         int col;
         int row;
     };
+
+    struct P_element
+    {
+        string OP;
+        int level;
+    };
+
+    struct E_element
+    {
+        string et;
+        int level;
+    };
+
+    static bool compareByLevel_E(const E_element &a, const E_element &b)
+    {
+        return a.level < b.level;
+    }
+
     public:
     TreeDefine() {}
 
@@ -224,7 +243,7 @@ class TreeDefine
     void Print_Test(TreeNode root);
     
     //----Main Function----
-    void theCreate(TreeNode root,FILE *Jfile);  
+    void theCreate(TreeNode root);  
  
 
     void Sub_Var_decl(MySymbolTable &subTable,TreeNode root,int ,vector<string> &subShow);
@@ -236,7 +255,7 @@ class TreeDefine
 
     void Label_Check_Name(TreeNode label_node,string fun_name,bool &has_return);
 
-    void New_Label_Check(MySymbolTable &myTable,TreeNode root,bool suc_defunc=true,int ROW=0,int COL=0,int IF_index=0);
+    void New_Label_Check(MySymbolTable &myTable,TreeNode root,bool suc_defunc=true,int ROW=0,int COL=0,int IF_index=0,string func_name="");
 
     void New_OP(MySymbolTable &myTable,TreeNode root,bool &check);
 
@@ -262,6 +281,32 @@ class TreeDefine
 
     void Check_IF_statement(MySymbolTable &myTable,TreeNode root,bool &check);
 
+    //====for codegen====//
+    void CreateBasicFun();
+
+    void WRITEandREAD(MySymbolTable &myTable,TreeNode node);
+
+    string WR_name(string name);
+
+    void ShowLDC(string exp_type,TreeNode ch,int &isflaot);
+
+    void Op_ss(string optype,int &BlockCount,bool Notfault=false);
+
+    void Show_data_codegen(MySymbolTable K_symbolTable,vector<string> ctr);
+
+    string Return_F_Name(string name,string type);
+
+    string Return_Array_type(string name,string type);
+
+    void  DealwithArraygen(MySymbolTable &myTable,TreeNode left_node,TreeNode right_node);
+
+    void  Codegen_OP(MySymbolTable &myTable,TreeNode root,vector<string> &OP_Type, vector<string> &et,string &pp);
+
+    void  Codegen_OP_2(MySymbolTable &myTable,TreeNode root,vector<P_element> &OP, vector<E_element> &et,int level);
+
+    void  Return_F_para(MySymbolTable &myTable,TreeNode root,string &output);  
+
+    void  Deal_with_Array(MySymbolTable &myTable,TreeNode root);
 };
 
 

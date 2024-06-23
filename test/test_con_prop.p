@@ -11,6 +11,7 @@ END;
 BEGIN
   a[3+4-6] := 10;
   c[1+100*0+1][2+4/2] := 100;
+  b:= (1+2)*3;
   writelnI(a[1]);
-  writelnI(c[2][4])
+  writelnI(c[2][4]);
 END.

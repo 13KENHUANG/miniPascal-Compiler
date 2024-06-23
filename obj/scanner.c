@@ -1156,8 +1156,7 @@ YY_RULE_SETUP
 {
 			            LIST;
 				   yylval.loc.text = (char*)malloc(strlen(yytext)+1);
-				   strcpy(yylval.loc.text,yytext);
-				   
+				   strcpy(yylval.loc.text,yytext);				   
 				   yylval.loc.first_line = line_no;
    		          	   yylval.loc.first_column = col_no - yyleng;
 				   return(IDENTIFIER);
@@ -1165,7 +1164,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 191 "scanner.l"
+#line 190 "scanner.l"
 {
 				   LIST;
                                        yylval.loc.text = (char*)malloc(strlen(yytext)+1);
@@ -1179,7 +1178,7 @@ YY_RULE_SETUP
 /* define INTEGERNUM, REALNUMBER, SCIENTIFIC here */
 case 42:
 YY_RULE_SETUP
-#line 202 "scanner.l"
+#line 201 "scanner.l"
 {
 		             LIST;
 		             // change to int
@@ -1189,7 +1188,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 208 "scanner.l"
+#line 207 "scanner.l"
 {
 			    LIST;
 			    // change to float
@@ -1199,7 +1198,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 214 "scanner.l"
+#line 213 "scanner.l"
 {
 			    LIST;
 			    //strtod為C語言的函式庫(轉換科學記號至浮點數),輸入字串須為const char*類型
@@ -1209,7 +1208,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 220 "scanner.l"
+#line 219 "scanner.l"
 {
 		             LIST;
 		             yylval.dval=strtod(yytext,NULL); 
@@ -1219,7 +1218,7 @@ YY_RULE_SETUP
 /* define single/multiple line comment here */
 case 46:
 YY_RULE_SETUP
-#line 227 "scanner.l"
+#line 226 "scanner.l"
 {
 	     tmp=col_no - yyleng;
 	     LIST;
@@ -1230,7 +1229,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 234 "scanner.l"
+#line 233 "scanner.l"
 {
 	     LIST;
 	     C2_LOG_End(comment_num);
@@ -1240,7 +1239,7 @@ YY_RULE_SETUP
 case 48:
 /* rule 48 can match eol */
 YY_RULE_SETUP
-#line 239 "scanner.l"
+#line 238 "scanner.l"
 {
 	     LIST;
 	     LIST_FLUSH;
@@ -1251,7 +1250,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 246 "scanner.l"
+#line 245 "scanner.l"
 {
 	     LIST;
 	     comment_num++;
@@ -1259,7 +1258,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 251 "scanner.l"
+#line 250 "scanner.l"
 {
                      tmp=col_no - yyleng;
 	            LIST;
@@ -1269,7 +1268,7 @@ YY_RULE_SETUP
 case 51:
 /* rule 51 can match eol */
 YY_RULE_SETUP
-#line 256 "scanner.l"
+#line 255 "scanner.l"
 {
 	            LIST;
 	            LIST_FLUSH;
@@ -1281,14 +1280,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 264 "scanner.l"
+#line 263 "scanner.l"
 {LIST;}
 	YY_BREAK
 /* define string constant (LITERALSTR) here */
 case 53:
 /* rule 53 can match eol */
 YY_RULE_SETUP
-#line 267 "scanner.l"
+#line 266 "scanner.l"
 {
 		  LOG(LITERALSTR);
 		  //strdup 函数会在堆上复制 yytext 的字符串，并返回一个新的指针
@@ -1300,13 +1299,13 @@ YY_RULE_SETUP
 case 54:
 /* rule 54 can match eol */
 YY_RULE_SETUP
-#line 276 "scanner.l"
+#line 275 "scanner.l"
 {opt_list=1;LIST;}
 	YY_BREAK
 case 55:
 /* rule 55 can match eol */
 YY_RULE_SETUP
-#line 277 "scanner.l"
+#line 276 "scanner.l"
 {opt_list=0;}
 	YY_BREAK
 /*
@@ -1315,13 +1314,13 @@ YY_RULE_SETUP
  */
 case 56:
 YY_RULE_SETUP
-#line 284 "scanner.l"
+#line 283 "scanner.l"
 LIST;
 	YY_BREAK
 case 57:
 /* rule 57 can match eol */
 YY_RULE_SETUP
-#line 286 "scanner.l"
+#line 285 "scanner.l"
 {
   LIST;
   LIST_FLUSH;
@@ -1330,15 +1329,15 @@ YY_RULE_SETUP
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 292 "scanner.l"
+#line 291 "scanner.l"
 { LIST; fprintf(stderr, "[ERROR] line %4d:%3d lexical analyzer error %s\n", line_no, col_no - yyleng, yytext); }
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 293 "scanner.l"
+#line 292 "scanner.l"
 ECHO;
 	YY_BREAK
-#line 1342 "obj/scanner.c"
+#line 1341 "obj/scanner.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COMMENT):
 case YY_STATE_EOF(COMMENT_SINGLE):
@@ -2308,4 +2307,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 293 "scanner.l"
+#line 292 "scanner.l"

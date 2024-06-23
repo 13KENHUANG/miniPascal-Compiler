@@ -181,8 +181,7 @@ Z [zZ]
 [a-zA-Z][a-zA-Z0-9]*                  {
 			            LIST;
 				   yylval.loc.text = (char*)malloc(strlen(yytext)+1);
-				   strcpy(yylval.loc.text,yytext);
-				   
+				   strcpy(yylval.loc.text,yytext);				   
 				   yylval.loc.first_line = line_no;
    		          	   yylval.loc.first_column = col_no - yyleng;
 				   return(IDENTIFIER);

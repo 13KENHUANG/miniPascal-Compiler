@@ -97,6 +97,8 @@ char *output = NULL;
 //static Node root = NULL;
 TreeNode savedTree=NULL;
 
+FILE *Jfile=NULL;
+
 extern
 #ifdef __cplusplus
 "C"
@@ -106,7 +108,7 @@ static void yyerror(const char *msg);
 extern int yylex_destroy(void);
 
 
-#line 110 "obj/parser.c"
+#line 112 "obj/parser.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -220,7 +222,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 54 "parser.y"
+#line 56 "parser.y"
 
   int val;
   char* text;
@@ -228,7 +230,7 @@ union YYSTYPE
   TreeNode node;
   LocType loc;
 
-#line 232 "obj/parser.c"
+#line 234 "obj/parser.c"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -626,15 +628,15 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int16 yyrline[] =
 {
-       0,    97,    97,   108,   109,   112,   121,   131,   132,   147,
-     162,   167,   174,   183,   194,   195,   202,   215,   222,   229,
-     240,   249,   258,   262,   277,   284,   295,   300,   307,   316,
-     326,   332,   338,   344,   354,   368,   374,   382,   387,   395,
-     396,   411,   417,   418,   432,   439,   440,   441,   442,   443,
-     444,   448,   455,   469,   475,   478,   487,   488,   490,   499,
-     504,   512,   513,   529,   530,   535,   542,   543,   548,   553,
-     558,   563,   568,   583,   584,   589,   602,   603,   608,   619,
-     630,   637,   644,   651,   658,   659,   664
+       0,    82,    82,    92,    93,    96,   105,   115,   116,   131,
+     146,   151,   158,   167,   178,   179,   186,   199,   206,   213,
+     224,   233,   242,   246,   261,   268,   279,   284,   291,   300,
+     310,   316,   322,   328,   338,   352,   358,   366,   371,   379,
+     380,   395,   401,   402,   416,   423,   424,   425,   426,   427,
+     428,   432,   439,   453,   459,   462,   471,   472,   474,   483,
+     488,   496,   497,   513,   514,   519,   526,   527,   532,   537,
+     542,   547,   552,   567,   568,   573,   586,   587,   592,   603,
+     614,   621,   628,   635,   642,   643,   648
 };
 #endif
 
@@ -1634,29 +1636,28 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 100 "parser.y"
+#line 85 "parser.y"
       {        
       	(yyval.node) = (yyvsp[-1].node);
       	(yyval.node)->setAttribute((yyvsp[-6].loc).text);
       	savedTree = (yyval.node);
-	
       }
-#line 1645 "obj/parser.c"
+#line 1646 "obj/parser.c"
     break;
 
   case 5:
-#line 113 "parser.y"
+#line 97 "parser.y"
         {
 	//   cout<<"routine\n";
 	   (yyval.node)=(yyvsp[-1].node);
 	   //$$->setSibling($2);
 	   (yyval.node)->addChild((yyvsp[0].node));
 	}
-#line 1656 "obj/parser.c"
+#line 1657 "obj/parser.c"
     break;
 
   case 6:
-#line 122 "parser.y"
+#line 106 "parser.y"
              {
 	   //     cout<<"routine_head\n";
 	       (yyval.node) = new TreeDefine(ROUTINEHEAD,line_no,col_no-yyleng);
@@ -1664,17 +1665,17 @@ yyreduce:
                 (yyval.node)->addChild((yyvsp[0].node));
                 //  $$->addChild($3);
 	     }
-#line 1668 "obj/parser.c"
+#line 1669 "obj/parser.c"
     break;
 
   case 7:
-#line 131 "parser.y"
+#line 115 "parser.y"
                {(yyval.node) = NULL;}
-#line 1674 "obj/parser.c"
+#line 1675 "obj/parser.c"
     break;
 
   case 8:
-#line 133 "parser.y"
+#line 117 "parser.y"
               {
 	        TreeNode t = (yyvsp[-1].node);
 	        if(t!=NULL){
@@ -1689,11 +1690,11 @@ yyreduce:
 	        else
 	        	  (yyval.node)=(yyvsp[0].node);
 	      }
-#line 1693 "obj/parser.c"
+#line 1694 "obj/parser.c"
     break;
 
   case 9:
-#line 148 "parser.y"
+#line 132 "parser.y"
               {
 	       TreeNode t = (yyvsp[-1].node);
 	        if(t!=NULL){
@@ -1708,40 +1709,40 @@ yyreduce:
 	        else
 	        	  (yyval.node)=(yyvsp[0].node);
 	      }
-#line 1712 "obj/parser.c"
+#line 1713 "obj/parser.c"
     break;
 
   case 10:
-#line 163 "parser.y"
+#line 147 "parser.y"
             {
 	//      cout<<"procedure_decl\n";
 	      (yyval.node)=(yyvsp[0].node);
 	    }
-#line 1721 "obj/parser.c"
+#line 1722 "obj/parser.c"
     break;
 
   case 11:
-#line 168 "parser.y"
+#line 152 "parser.y"
             {
 	//      cout<<"function_decl\n";
 	      (yyval.node)=(yyvsp[0].node);
 	    }
-#line 1730 "obj/parser.c"
+#line 1731 "obj/parser.c"
     break;
 
   case 12:
-#line 175 "parser.y"
+#line 159 "parser.y"
               {
 	     //     cout<<"function_decl\n";
 	      	(yyval.node)=new TreeDefine(FUNCTION_Tree,line_no,col_no-yyleng);
 	      	(yyval.node)->addChild((yyvsp[-3].node));
 	      	(yyval.node)->addChild((yyvsp[-1].node));
 	      }
-#line 1741 "obj/parser.c"
+#line 1742 "obj/parser.c"
     break;
 
   case 13:
-#line 184 "parser.y"
+#line 168 "parser.y"
               {
 	  //        cout<<"function_head\n";
 	        (yyval.node)=new TreeDefine(FUNCTIONHEAD,(yyvsp[-4].loc).first_line,(yyvsp[-4].loc).first_column);
@@ -1750,26 +1751,26 @@ yyreduce:
                  (yyval.node)->addChild((yyvsp[0].node));
 
 	      }
-#line 1754 "obj/parser.c"
+#line 1755 "obj/parser.c"
     break;
 
   case 14:
-#line 194 "parser.y"
+#line 178 "parser.y"
              {(yyval.node) = NULL;}
-#line 1760 "obj/parser.c"
+#line 1761 "obj/parser.c"
     break;
 
   case 15:
-#line 196 "parser.y"
+#line 180 "parser.y"
             {
 	  //   cout<<"parameters\n";
 	     (yyval.node)=(yyvsp[-1].node);
 	    }
-#line 1769 "obj/parser.c"
+#line 1770 "obj/parser.c"
     break;
 
   case 16:
-#line 203 "parser.y"
+#line 187 "parser.y"
                {
 	  //      cout<<"para_decl_list_1\n";
 	        TreeNode t = (yyvsp[-2].node);
@@ -1782,73 +1783,73 @@ yyreduce:
                   else
                   	(yyval.node)=(yyvsp[0].node);
 	       }
-#line 1786 "obj/parser.c"
+#line 1787 "obj/parser.c"
     break;
 
   case 17:
-#line 216 "parser.y"
+#line 200 "parser.y"
               {
 	  //      cout<<"para_decl_list_2\n";
 	        (yyval.node)=(yyvsp[0].node);
 	      }
-#line 1795 "obj/parser.c"
+#line 1796 "obj/parser.c"
     break;
 
   case 18:
-#line 223 "parser.y"
+#line 207 "parser.y"
                {
 	    //      cout<<"para_type_list_1\n";
 	       	(yyval.node)=new TreeDefine(VAR_PARA,line_no,col_no-yyleng);
 	       	(yyval.node)->addChild((yyvsp[-2].node));
 	       	(yyval.node)->addChild((yyvsp[0].node));
 	       }
-#line 1806 "obj/parser.c"
+#line 1807 "obj/parser.c"
     break;
 
   case 19:
-#line 230 "parser.y"
+#line 214 "parser.y"
                 {
 	   //      cout<<"para_type_list_2\n";
 	         (yyval.node)=new TreeDefine(VAL_PARA,line_no,col_no-yyleng);
 	         (yyval.node)->addChild((yyvsp[-2].node));
 	       	(yyval.node)->addChild((yyvsp[0].node));
 	        }
-#line 1817 "obj/parser.c"
+#line 1818 "obj/parser.c"
     break;
 
   case 20:
-#line 241 "parser.y"
+#line 225 "parser.y"
                 {
 	//	   cout<<"procedure_decl\n";
 		   (yyval.node)=new TreeDefine(PROCEDURE_Tree,line_no,col_no-yyleng);
 		   (yyval.node)->addChild((yyvsp[-3].node));
 		   (yyval.node)->addChild((yyvsp[-1].node));
 		}
-#line 1828 "obj/parser.c"
+#line 1829 "obj/parser.c"
     break;
 
   case 21:
-#line 250 "parser.y"
+#line 234 "parser.y"
                 {
 	//	cout<<"procedure_head\n";
 		(yyval.node)=new TreeDefine(PROCEDUREHEAD,line_no,col_no-yyleng);
                   (yyval.node)->setAttribute((yyvsp[-1].loc).text);
                   (yyval.node)->addChild((yyvsp[0].node));
 		}
-#line 1839 "obj/parser.c"
+#line 1840 "obj/parser.c"
     break;
 
   case 22:
-#line 258 "parser.y"
+#line 242 "parser.y"
            {
          //  cout<<"var_part_1\n";
            (yyval.node) = NULL;
            }
-#line 1848 "obj/parser.c"
+#line 1849 "obj/parser.c"
     break;
 
   case 23:
-#line 263 "parser.y"
+#line 247 "parser.y"
           {
 	//   cout<<"var_part_2\n";
 	   TreeNode t = (yyvsp[-2].node);
@@ -1861,60 +1862,60 @@ yyreduce:
                   else
                   	(yyval.node)=(yyvsp[0].node);
 	  }
-#line 1865 "obj/parser.c"
+#line 1866 "obj/parser.c"
     break;
 
   case 24:
-#line 278 "parser.y"
+#line 262 "parser.y"
                 {
          //       cout<<"var_decl_list\n";
 	      (yyval.node)=(yyvsp[0].node);
 	      }
-#line 1874 "obj/parser.c"
+#line 1875 "obj/parser.c"
     break;
 
   case 25:
-#line 285 "parser.y"
+#line 269 "parser.y"
         {
 	//   cout<<"var_decl\n";
 	   (yyval.node)=new TreeDefine(VAR_Tree,line_no,col_no-yyleng);
 	   (yyval.node)->addChild((yyvsp[-3].node));
 	   (yyval.node)->addChild((yyvsp[-1].node));
 	}
-#line 1885 "obj/parser.c"
+#line 1886 "obj/parser.c"
     break;
 
   case 26:
-#line 296 "parser.y"
+#line 280 "parser.y"
               {
             //  cout<<"type_decl_1\n";
 	     (yyval.node)=(yyvsp[0].node);
 	    }
-#line 1894 "obj/parser.c"
+#line 1895 "obj/parser.c"
     break;
 
   case 27:
-#line 301 "parser.y"
+#line 285 "parser.y"
            {
 	//    cout<<"type_decl_2\n";
 	    (yyval.node)=(yyvsp[0].node);
 	   }
-#line 1903 "obj/parser.c"
+#line 1904 "obj/parser.c"
     break;
 
   case 28:
-#line 308 "parser.y"
+#line 292 "parser.y"
              {
 	  //      cout<<"const_value\n";
 	        (yyval.node) =new TreeDefine(EK_CONST,line_no,col_no-yyleng);
                   (yyval.node)->setExpType(INT);
                   (yyval.node)->setAttribute((yyvsp[0].val));
 	     }
-#line 1914 "obj/parser.c"
+#line 1915 "obj/parser.c"
     break;
 
   case 29:
-#line 317 "parser.y"
+#line 301 "parser.y"
                {
 	    //      cout<<"array_type_decl\n";
 	       	(yyval.node)=new TreeDefine(TK_ARRAY,line_no,col_no-yyleng);
@@ -1922,41 +1923,41 @@ yyreduce:
 	       	(yyval.node)->addChild((yyvsp[0].node));
 	       	(yyval.node)->setExpType(ET_ARRAY);
 	       }
-#line 1926 "obj/parser.c"
+#line 1927 "obj/parser.c"
     break;
 
   case 30:
-#line 327 "parser.y"
+#line 311 "parser.y"
                 {
 	      //   cout<<"INTEGER\n";
 	         (yyval.node)=new TreeDefine(SIMPLE_SYS,line_no,col_no-yyleng);
                   (yyval.node)->setExpType(INT);
 	        }
-#line 1936 "obj/parser.c"
+#line 1937 "obj/parser.c"
     break;
 
   case 31:
-#line 333 "parser.y"
+#line 317 "parser.y"
                 {
 	    //     cout<<"REAL\n";
 	         (yyval.node)=new TreeDefine(SIMPLE_SYS,line_no,col_no-yyleng);
                   (yyval.node)->setExpType(REAL_Tree);
 	        }
-#line 1946 "obj/parser.c"
+#line 1947 "obj/parser.c"
     break;
 
   case 32:
-#line 339 "parser.y"
+#line 323 "parser.y"
                 {
 	    //      cout<<"STRING\n";
 	          (yyval.node)=new TreeDefine(SIMPLE_SYS,line_no,col_no-yyleng);
                    (yyval.node)->setExpType(CHAR);
 	        }
-#line 1956 "obj/parser.c"
+#line 1957 "obj/parser.c"
     break;
 
   case 33:
-#line 345 "parser.y"
+#line 329 "parser.y"
                 {
 	  //       cout<<"const_value DOTDOT const_value\n";
 	        	(yyval.node)=new TreeDefine(TK_SIMPLE_LIMIT,line_no,col_no-yyleng);
@@ -1964,11 +1965,11 @@ yyreduce:
                     (yyval.node)->addChild((yyvsp[0].node));
                     (yyval.node)->setExpType(ET_SIMPLE_LIMIT);
 	        }
-#line 1968 "obj/parser.c"
+#line 1969 "obj/parser.c"
     break;
 
   case 34:
-#line 355 "parser.y"
+#line 339 "parser.y"
          {
 	//   cout<<"name_list COMMA ID\n";
 	   TreeNode t=(yyvsp[-2].node);
@@ -1982,54 +1983,54 @@ yyreduce:
                (yyval.node)=(yyvsp[0].node);
                
 	 }
-#line 1986 "obj/parser.c"
+#line 1987 "obj/parser.c"
     break;
 
   case 35:
-#line 369 "parser.y"
+#line 353 "parser.y"
           {
 //	  cout<<"name_list : ID\n";
 	  (yyval.node)=(yyvsp[0].node);
 	  }
-#line 1995 "obj/parser.c"
+#line 1996 "obj/parser.c"
     break;
 
   case 36:
-#line 375 "parser.y"
+#line 359 "parser.y"
      {
    //   cout<<"IDENTIFIER\n";
       (yyval.node)=new TreeDefine(EK_ID,(yyvsp[0].loc).first_line,(yyvsp[0].loc).first_column);
       (yyval.node)->setAttribute((yyvsp[0].loc).text);
      }
-#line 2005 "obj/parser.c"
+#line 2006 "obj/parser.c"
     break;
 
   case 37:
-#line 382 "parser.y"
+#line 366 "parser.y"
                              {
           //          cout<<"routine_body :  compound_stmt\n";
 		(yyval.node)=(yyvsp[0].node);
 		}
-#line 2014 "obj/parser.c"
+#line 2015 "obj/parser.c"
     break;
 
   case 38:
-#line 389 "parser.y"
+#line 373 "parser.y"
                {
         //       cout<<"compound_stmt: PBEGIN \n";
                (yyval.node)=(yyvsp[0].node);
                }
-#line 2023 "obj/parser.c"
+#line 2024 "obj/parser.c"
     break;
 
   case 39:
-#line 395 "parser.y"
+#line 379 "parser.y"
             { (yyval.node)=NULL;}
-#line 2029 "obj/parser.c"
+#line 2030 "obj/parser.c"
     break;
 
   case 40:
-#line 397 "parser.y"
+#line 381 "parser.y"
           {
 	   TreeNode t=(yyvsp[-2].node);
              if(t!=NULL){
@@ -2044,25 +2045,25 @@ yyreduce:
                
             
 	  }
-#line 2048 "obj/parser.c"
+#line 2049 "obj/parser.c"
     break;
 
   case 41:
-#line 412 "parser.y"
+#line 396 "parser.y"
           {
 	    (yyval.node)=NULL;
 	  }
-#line 2056 "obj/parser.c"
+#line 2057 "obj/parser.c"
     break;
 
   case 42:
-#line 417 "parser.y"
+#line 401 "parser.y"
                      {(yyval.node)=(yyvsp[0].node);}
-#line 2062 "obj/parser.c"
+#line 2063 "obj/parser.c"
     break;
 
   case 43:
-#line 419 "parser.y"
+#line 403 "parser.y"
             {
 	   TreeNode t=(yyvsp[-2].node);
              if(t!=NULL){
@@ -2074,67 +2075,67 @@ yyreduce:
             else
                (yyval.node)=(yyvsp[0].node);
 	    }
-#line 2078 "obj/parser.c"
+#line 2079 "obj/parser.c"
     break;
 
   case 44:
-#line 433 "parser.y"
+#line 417 "parser.y"
         {
 	  (yyval.node)=new TreeDefine(LABEL,line_no,col_no-yyleng);
 	  (yyval.node)->addChild((yyvsp[0].node));
 	}
-#line 2087 "obj/parser.c"
+#line 2088 "obj/parser.c"
     break;
 
   case 45:
-#line 439 "parser.y"
+#line 423 "parser.y"
                         {(yyval.node)=(yyvsp[0].node);}
-#line 2093 "obj/parser.c"
+#line 2094 "obj/parser.c"
     break;
 
   case 46:
-#line 440 "parser.y"
+#line 424 "parser.y"
                        {(yyval.node)=(yyvsp[0].node);}
-#line 2099 "obj/parser.c"
+#line 2100 "obj/parser.c"
     break;
 
   case 47:
-#line 441 "parser.y"
+#line 425 "parser.y"
                        {(yyval.node)=(yyvsp[0].node);}
-#line 2105 "obj/parser.c"
+#line 2106 "obj/parser.c"
     break;
 
   case 48:
-#line 442 "parser.y"
+#line 426 "parser.y"
                        {(yyval.node)=(yyvsp[0].node);}
-#line 2111 "obj/parser.c"
+#line 2112 "obj/parser.c"
     break;
 
   case 49:
-#line 443 "parser.y"
+#line 427 "parser.y"
                        {(yyval.node)=(yyvsp[0].node);}
-#line 2117 "obj/parser.c"
+#line 2118 "obj/parser.c"
     break;
 
   case 50:
-#line 444 "parser.y"
+#line 428 "parser.y"
                        {(yyval.node)=NULL;}
-#line 2123 "obj/parser.c"
+#line 2124 "obj/parser.c"
     break;
 
   case 51:
-#line 449 "parser.y"
+#line 433 "parser.y"
              {
 	         (yyval.node)=new TreeDefine(ASSIGN,(yyvsp[-2].node)->getLineNumber(),(yyvsp[-2].node)->getColNumber());
 	         (yyval.node)->addChild((yyvsp[-2].node));
                    (yyval.node)->addChild((yyvsp[0].node));
                    (yyval.node)->setAttribute(OK_ID,4);
 	     }
-#line 2134 "obj/parser.c"
+#line 2135 "obj/parser.c"
     break;
 
   case 52:
-#line 456 "parser.y"
+#line 440 "parser.y"
              {
 	     	(yyval.node)=new TreeDefine(ASSIGN,(yyvsp[-3].node)->getLineNumber(),(yyvsp[-3].node)->getColNumber());
 	     	(yyval.node)->addChild((yyvsp[-3].node));
@@ -2146,85 +2147,85 @@ yyreduce:
 	     	(yyval.node)->addChild((yyvsp[0].node));
 	     	(yyval.node)->setAttribute(OK_ARRAY,4);
 	     }
-#line 2150 "obj/parser.c"
+#line 2151 "obj/parser.c"
     break;
 
   case 53:
-#line 470 "parser.y"
+#line 454 "parser.y"
       {
         (yyval.node)=(yyvsp[-2].node);
         (yyval.node)->setSibling((yyvsp[0].node));
        // $$->addChild($4);
       }
-#line 2160 "obj/parser.c"
+#line 2161 "obj/parser.c"
     break;
 
   case 54:
-#line 475 "parser.y"
+#line 459 "parser.y"
        {(yyval.node)=NULL;}
-#line 2166 "obj/parser.c"
+#line 2167 "obj/parser.c"
     break;
 
   case 55:
-#line 479 "parser.y"
+#line 463 "parser.y"
            {
 	      (yyval.node)=new TreeDefine(IF_Tree,line_no,col_no-yyleng);
 	      (yyval.node)->addChild((yyvsp[-3].node));	
 	      (yyval.node)->addChild((yyvsp[-1].node));
 	      (yyval.node)->addChild((yyvsp[0].node));
 	   }
-#line 2177 "obj/parser.c"
+#line 2178 "obj/parser.c"
     break;
 
   case 56:
-#line 487 "parser.y"
+#line 471 "parser.y"
               {(yyval.node)=NULL;}
-#line 2183 "obj/parser.c"
+#line 2184 "obj/parser.c"
     break;
 
   case 57:
-#line 488 "parser.y"
+#line 472 "parser.y"
                       {(yyval.node)=(yyvsp[0].node);}
-#line 2189 "obj/parser.c"
+#line 2190 "obj/parser.c"
     break;
 
   case 58:
-#line 491 "parser.y"
+#line 475 "parser.y"
            {
 	     (yyval.node)=new TreeDefine(WHILE_Tree,(yyvsp[-2].node)->getLineNumber(),(yyvsp[-2].node)->getColNumber());
 	     (yyval.node)->addChild((yyvsp[-2].node));
 	     (yyval.node)->addChild((yyvsp[0].node));
 	   }
-#line 2199 "obj/parser.c"
+#line 2200 "obj/parser.c"
     break;
 
   case 59:
-#line 500 "parser.y"
+#line 484 "parser.y"
            {
 	    (yyval.node)=new TreeDefine(PROC_ID,(yyvsp[0].node)->getLineNumber(),(yyvsp[0].node)->getColNumber());
 	    (yyval.node)->setAttribute((yyvsp[0].node)->getAttribute());	
 	   }
-#line 2208 "obj/parser.c"
+#line 2209 "obj/parser.c"
     break;
 
   case 60:
-#line 505 "parser.y"
+#line 489 "parser.y"
           {
 	    (yyval.node)=new TreeDefine(PROC_ID,(yyvsp[-3].node)->getLineNumber(),(yyvsp[-3].node)->getColNumber());
 	    (yyval.node)->setAttribute((yyvsp[-3].node)->getAttribute());
 	    (yyval.node)->addChild((yyvsp[-1].node));
 	  }
-#line 2218 "obj/parser.c"
+#line 2219 "obj/parser.c"
     break;
 
   case 61:
-#line 512 "parser.y"
+#line 496 "parser.y"
                              {(yyval.node)=(yyvsp[0].node);}
-#line 2224 "obj/parser.c"
+#line 2225 "obj/parser.c"
     break;
 
   case 62:
-#line 514 "parser.y"
+#line 498 "parser.y"
                 {
 	         TreeNode t=(yyvsp[-2].node);
                    if(t!=NULL){
@@ -2236,143 +2237,143 @@ yyreduce:
                   else
                     (yyval.node)=(yyvsp[0].node);
 	        }
-#line 2240 "obj/parser.c"
+#line 2241 "obj/parser.c"
     break;
 
   case 63:
-#line 529 "parser.y"
+#line 513 "parser.y"
                             { (yyval.node)=(yyvsp[0].node);}
-#line 2246 "obj/parser.c"
+#line 2247 "obj/parser.c"
     break;
 
   case 64:
-#line 531 "parser.y"
+#line 515 "parser.y"
            {
 	 //   cout<<"boolexpression AND boolexpression\n";
 	    (yyval.node)=new TreeDefine((yyvsp[-2].node),(yyvsp[0].node),AND_Tree,line_no,col_no-yyleng);
 	   }
-#line 2255 "obj/parser.c"
+#line 2256 "obj/parser.c"
     break;
 
   case 65:
-#line 536 "parser.y"
+#line 520 "parser.y"
            {
 	 //   cout<<"boolexpression OR boolexpression\n";
 	    (yyval.node)=new TreeDefine((yyvsp[-2].node),(yyvsp[0].node),OR_Tree,line_no,col_no-yyleng);
 	   }
-#line 2264 "obj/parser.c"
+#line 2265 "obj/parser.c"
     break;
 
   case 66:
-#line 542 "parser.y"
+#line 526 "parser.y"
                                    { (yyval.node)=(yyvsp[0].node);}
-#line 2270 "obj/parser.c"
+#line 2271 "obj/parser.c"
     break;
 
   case 67:
-#line 544 "parser.y"
+#line 528 "parser.y"
               {
 	     //  cout<<"simple_expression GTOP simple_expression\n";
 	        (yyval.node)=new TreeDefine((yyvsp[-2].node),(yyvsp[0].node),GT,(yyvsp[-1].loc).first_line,(yyvsp[-1].loc).first_column);
 	       }
-#line 2279 "obj/parser.c"
+#line 2280 "obj/parser.c"
     break;
 
   case 68:
-#line 549 "parser.y"
+#line 533 "parser.y"
               {
 	    //   cout<<"simple_expression LTOP simple_expression\n";
 	        (yyval.node)=new TreeDefine((yyvsp[-2].node),(yyvsp[0].node),LT,(yyvsp[-1].loc).first_line,(yyvsp[-1].loc).first_column);
 	       }
-#line 2288 "obj/parser.c"
+#line 2289 "obj/parser.c"
     break;
 
   case 69:
-#line 554 "parser.y"
+#line 538 "parser.y"
               {
 	    //   cout<<"simple_expression EQOP simple_expression\n";
 	        (yyval.node)=new TreeDefine((yyvsp[-2].node),(yyvsp[0].node),EQUAL,(yyvsp[-1].loc).first_line,(yyvsp[-1].loc).first_column);
 	       }
-#line 2297 "obj/parser.c"
+#line 2298 "obj/parser.c"
     break;
 
   case 70:
-#line 559 "parser.y"
+#line 543 "parser.y"
               {
 	    //   cout<<"simple_expression GETOP simple_expression\n";
 	        (yyval.node)=new TreeDefine((yyvsp[-2].node),(yyvsp[0].node),GE,(yyvsp[-1].loc).first_line,(yyvsp[-1].loc).first_column);
 	       }
-#line 2306 "obj/parser.c"
+#line 2307 "obj/parser.c"
     break;
 
   case 71:
-#line 564 "parser.y"
+#line 548 "parser.y"
               {
 	  //     cout<<"simple_expression LETOP simple_expression\n";
 	        (yyval.node)=new TreeDefine((yyvsp[-2].node),(yyvsp[0].node),LE,(yyvsp[-1].loc).first_line,(yyvsp[-1].loc).first_column);
 	       }
-#line 2315 "obj/parser.c"
+#line 2316 "obj/parser.c"
     break;
 
   case 72:
-#line 569 "parser.y"
+#line 553 "parser.y"
               {
 	//      cout<<"simple_expression NEQOP simple_expression\n";
 	        (yyval.node)=new TreeDefine((yyvsp[-2].node),(yyvsp[0].node),UNEQUAL,(yyvsp[-1].loc).first_line,(yyvsp[-1].loc).first_column);
 	       }
-#line 2324 "obj/parser.c"
+#line 2325 "obj/parser.c"
     break;
 
   case 73:
-#line 583 "parser.y"
+#line 567 "parser.y"
                          { (yyval.node)=(yyvsp[0].node);}
-#line 2330 "obj/parser.c"
+#line 2331 "obj/parser.c"
     break;
 
   case 74:
-#line 585 "parser.y"
+#line 569 "parser.y"
                 {
 	//	 cout<<"simple_expression ADDOP term\n";
 		  (yyval.node)=new TreeDefine((yyvsp[-2].node),(yyvsp[0].node),PLUS,(yyvsp[-1].loc).first_line,(yyvsp[-1].loc).first_column);
 		}
-#line 2339 "obj/parser.c"
+#line 2340 "obj/parser.c"
     break;
 
   case 75:
-#line 590 "parser.y"
+#line 574 "parser.y"
                 {
 	//	 cout<<"simple_expression SUBOP term\n";
 		  (yyval.node)=new TreeDefine((yyvsp[-2].node),(yyvsp[0].node),MINUS,(yyvsp[-1].loc).first_line,(yyvsp[-1].loc).first_column);
 		}
-#line 2348 "obj/parser.c"
+#line 2349 "obj/parser.c"
     break;
 
   case 76:
-#line 602 "parser.y"
+#line 586 "parser.y"
               { (yyval.node)=(yyvsp[0].node);}
-#line 2354 "obj/parser.c"
+#line 2355 "obj/parser.c"
     break;
 
   case 77:
-#line 604 "parser.y"
+#line 588 "parser.y"
       {
     //  cout<<"term MULOP factor\n";
        (yyval.node)=new TreeDefine((yyvsp[-2].node),(yyvsp[0].node),MUL,(yyvsp[-1].loc).first_line,(yyvsp[-1].loc).first_column);
       }
-#line 2363 "obj/parser.c"
+#line 2364 "obj/parser.c"
     break;
 
   case 78:
-#line 609 "parser.y"
+#line 593 "parser.y"
       {
     //  cout<<"term DIVOP factor\n";
        (yyval.node)=new TreeDefine((yyvsp[-2].node),(yyvsp[0].node),DIV,(yyvsp[-1].loc).first_line,(yyvsp[-1].loc).first_column);
       }
-#line 2372 "obj/parser.c"
+#line 2373 "obj/parser.c"
     break;
 
   case 79:
-#line 620 "parser.y"
+#line 604 "parser.y"
          {
        //   cout<<"ID tail\n";
          	 (yyval.node)=new TreeDefine(PROC_ID,(yyvsp[-1].node)->getLineNumber(),(yyvsp[-1].node)->getColNumber());
@@ -2383,79 +2384,79 @@ yyreduce:
          	 else
          	    (yyval.node)->addChild((yyvsp[0].node));
          }
-#line 2387 "obj/parser.c"
+#line 2388 "obj/parser.c"
     break;
 
   case 80:
-#line 631 "parser.y"
+#line 615 "parser.y"
          {
        //   cout<<"ID LPAREN expression_list RPAREN\n";
            (yyval.node)=new TreeDefine(PROC_FUNC,(yyvsp[-3].node)->getLineNumber(),(yyvsp[-3].node)->getColNumber());
            (yyval.node)->setAttribute((yyvsp[-3].node)->getAttribute());
            (yyval.node)->addChild((yyvsp[-1].node));
          }
-#line 2398 "obj/parser.c"
+#line 2399 "obj/parser.c"
     break;
 
   case 81:
-#line 638 "parser.y"
+#line 622 "parser.y"
          {
          //  cout<<"Hello INTEGERNUM="<<$1<<"\n";
           (yyval.node) =new TreeDefine(EK_CONST,line_no,col_no-yyleng);
           (yyval.node)->setExpType(INT);
           (yyval.node)->setAttribute((yyvsp[0].val));
          }
-#line 2409 "obj/parser.c"
+#line 2410 "obj/parser.c"
     break;
 
   case 82:
-#line 645 "parser.y"
+#line 629 "parser.y"
          {
        //   cout<<"REALNUMBER\n";
           (yyval.node) = new TreeDefine(EK_CONST,line_no,col_no-yyleng);
           (yyval.node)->setExpType(REAL_Tree);
           (yyval.node)->setAttribute((yyvsp[0].dval));
          }
-#line 2420 "obj/parser.c"
+#line 2421 "obj/parser.c"
     break;
 
   case 83:
-#line 652 "parser.y"
+#line 636 "parser.y"
          {
       //    cout<<"LITERALSTR\n";
           (yyval.node) = new TreeDefine(EK_CONST,line_no,col_no-yyleng);
           (yyval.node)->setExpType(STRING_Tree);
           (yyval.node)->setAttribute((yyvsp[0].text));
          }
-#line 2431 "obj/parser.c"
+#line 2432 "obj/parser.c"
     break;
 
   case 84:
-#line 658 "parser.y"
+#line 642 "parser.y"
                                   {(yyval.node)=(yyvsp[-1].node);}
-#line 2437 "obj/parser.c"
+#line 2438 "obj/parser.c"
     break;
 
   case 85:
-#line 660 "parser.y"
+#line 644 "parser.y"
        {
      //  cout<<"SUBOP factor\n";
        (yyval.node)=new TreeDefine((yyvsp[0].node),NULL,MINUS,line_no,col_no-yyleng);
        }
-#line 2446 "obj/parser.c"
+#line 2447 "obj/parser.c"
     break;
 
   case 86:
-#line 665 "parser.y"
+#line 649 "parser.y"
        {
      //  cout<<"NOT factor\n";
        (yyval.node)=new TreeDefine((yyvsp[0].node),NULL,NOT_Tree,line_no,col_no-yyleng);
        }
-#line 2455 "obj/parser.c"
+#line 2456 "obj/parser.c"
     break;
 
 
-#line 2459 "obj/parser.c"
+#line 2460 "obj/parser.c"
 
       default: break;
     }
@@ -2693,7 +2694,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 671 "parser.y"
+#line 655 "parser.y"
 
 
 void yyerror(const char *msg) {
@@ -2771,24 +2772,18 @@ int main(int argc, char *argv[]) {
     	string name = savedTree->getAttribute()._string;
     	currentPath+=name ;
     	currentPath+=".j";
-    	FILE *fd = fopen(currentPath.c_str(), "w");
-    	if (fd == NULL) 
+    	Jfile = fopen(currentPath.c_str(), "w");
+    	if (Jfile == NULL) 
     	{
         	   perror("Error opening file for code generation");
             return 0;
    	}
-   	savedTree->theCreate(savedTree,fd);
+   	savedTree->theCreate(savedTree);
    	/*string tmp=".super java/lang/Object\n";
     	fprintf(fd,"156987\n");
     	fprintf(fd,"%s",tmp.c_str());
     	fprintf(fd,"%s",currentPath.c_str());*/
     }
-    
-    
-   
-    
-    
-
 
     //=========================//
     /*if(!pass_error && savedTree!=NULL){

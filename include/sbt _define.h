@@ -11,6 +11,7 @@ struct SymbolTable_Element
   int scope;
   string type;
   string K_Type;
+  int para_index=-1;
   bool bDecl=false;
   int col;
   int row;

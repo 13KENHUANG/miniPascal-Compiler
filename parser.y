@@ -28,6 +28,8 @@ char *output = NULL;
 //static Node root = NULL;
 TreeNode savedTree=NULL;
 
+FILE *Jfile=NULL;
+
 extern
 #ifdef __cplusplus
 "C"
@@ -77,23 +79,6 @@ extern int yylex_destroy(void);
        $n return the $$ result you assigned to the rule, ex: $1 */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 prog: PROGRAM IDENTIFIER LPAREN identifier_list_p RPAREN SEMICOLON  
       routine
       DOT
@@ -101,7 +86,6 @@ prog: PROGRAM IDENTIFIER LPAREN identifier_list_p RPAREN SEMICOLON
       	$$ = $7;
       	$$->setAttribute($2.text);
       	savedTree = $$;
-	
       }
       ;
       
@@ -745,24 +729,18 @@ int main(int argc, char *argv[]) {
     	string name = savedTree->getAttribute()._string;
     	currentPath+=name ;
     	currentPath+=".j";
-    	FILE *fd = fopen(currentPath.c_str(), "w");
-    	if (fd == NULL) 
+    	Jfile = fopen(currentPath.c_str(), "w");
+    	if (Jfile == NULL) 
     	{
         	   perror("Error opening file for code generation");
             return 0;
    	}
-   	savedTree->theCreate(savedTree,fd);
+   	savedTree->theCreate(savedTree);
    	/*string tmp=".super java/lang/Object\n";
     	fprintf(fd,"156987\n");
     	fprintf(fd,"%s",tmp.c_str());
     	fprintf(fd,"%s",currentPath.c_str());*/
     }
-    
-    
-   
-    
-    
-
 
     //=========================//
     /*if(!pass_error && savedTree!=NULL){

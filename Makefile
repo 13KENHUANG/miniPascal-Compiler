@@ -53,7 +53,7 @@ example: all jasmin.jar
 
 pack:
 	make clean
-	zip -r icd22-hw4.zip . -x ".*" -x "*.zip" -x "test/*"
+	zip -r icd22-hw4.zip . -x ".*" -x "*.zip" 
 
 .PHONY: clean
 
