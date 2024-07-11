@@ -23,6 +23,6 @@
 * Function
 * Procedure
 
-## Function Implementation and Flowchart
+## Summary and flow chart
 
 ![This is an alt text.](minipascal.PNG)
