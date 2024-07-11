@@ -1,12 +1,13 @@
 # miniPascal Compiler implement
 *A pascal compiler which can translate pascal code to Jasmin assembly language*
+**本專案以C/C++高級語言撰寫，並將miniPascal語言作為編譯目標，最終生成能運行於JVM上的Java字節碼（Java bytecode)**
 
 # OverView
 *要完成一個編譯器,通常需要幾個階段：
 1. 詞法分析 (Lexical Analysis)
-    目標：將源代碼轉換為一系列標記（tokens）。
-    過程：讀取源代碼字符流，識別並生成標記，如關鍵字、標識符、操作符、字面值等。
-    工具：可以使用工具如 Lex 或 Flex 來生成詞法分析器。
+    *目標：將源代碼轉換為一系列標記（tokens）。*
+    *過程：讀取源代碼字符流，識別並生成標記，如關鍵字、標識符、操作符、字面值等。*
+    *工具：可以使用工具如 Lex 或 Flex 來生成詞法分析器。*
 
 2. 語法分析 (Syntax Analysis)
     目標：將標記序列轉換為語法樹（Syntax Tree）。
@@ -29,7 +30,6 @@
     目標：將優化後的中間代碼轉換為目標機器的低級表示，如匯編語言或機器碼。
     過程：根據目標機器的指令集生成對應的低級代碼。
 
-**本專案以C/C++高級語言撰寫，並將miniPascal語言作為編譯目標，最終生成能運行於JVM上的Java字節碼（Java bytecode)**
 
 ## Runtime Environment
 * Ubuntu 20.04.4
