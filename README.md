@@ -1,7 +1,7 @@
 # miniPascal Compiler implement
 *A pascal compiler which can translate pascal code to Jasmin assembly language*  
-**本專案以C/C++高級語言撰寫，將miniPascal語言作為編譯目標，最終生成能運行於JVM上的Java字節碼（Java bytecode**  
-**由於直接翻譯成Java字節碼，因此省略了中間代碼生成的過程。**
+**-->本專案以C/C++高級語言撰寫，將miniPascal語言作為編譯目標，最終生成能運行於JVM上的Java字節碼（Java bytecode**  
+**-->由於直接翻譯成Java字節碼，因此省略了中間代碼生成的過程**
 
 # OverView
 *要完成一個編譯器,通常需要幾個階段：
