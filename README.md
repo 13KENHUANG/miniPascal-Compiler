@@ -25,7 +25,7 @@
                           yylval.loc.first_line = line_no;
                           yylval.loc.first_column = col_no - yyleng;
                           return(IDENTIFIER);
-			                }
+                      }
 ```
 
 ## 2.語法分析 (Syntax Analysis)
