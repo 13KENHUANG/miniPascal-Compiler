@@ -16,6 +16,17 @@
 *目標：將源代碼轉換為一系列標記（tokens)。*  
 *過程：讀取源代碼字符流，識別並生成標記，如關鍵字、標識符、操作符、字面值等。*    
 *工具：可以使用工具如 Lex 或 Flex 來生成詞法分析器。*    
+*應用說明:*  
+'''
+[a-zA-Z][a-zA-Z0-9]*  {
+                          LIST;
+                          yylval.loc.text = (char*)malloc(strlen(yytext)+1);
+                          strcpy(yylval.loc.text,yytext);				   
+                          yylval.loc.first_line = line_no;
+                          yylval.loc.first_column = col_no - yyleng;
+                          return(IDENTIFIER);
+			                }
+'''
 
 ## 2.語法分析 (Syntax Analysis)
 *目標：檢查標記的結構是否符合語法規則，生成語法樹。*  
