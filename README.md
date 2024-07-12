@@ -18,13 +18,14 @@
 *工具：可以使用工具如 Lex 或 Flex 來生成詞法分析器。*    
 *Example：*    
 ```
+//識別變數名稱
 [a-zA-Z][a-zA-Z0-9]*  {
                           LIST;
                           yylval.loc.text = (char*)malloc(strlen(yytext)+1);
-                          strcpy(yylval.loc.text,yytext);				   
-                          yylval.loc.first_line = line_no;
-                          yylval.loc.first_column = col_no - yyleng;
-                          return(IDENTIFIER);
+                          strcpy(yylval.loc.text,yytext);				             
+                          yylval.loc.first_line = line_no;                  //紀錄行數
+                          yylval.loc.first_column = col_no - yyleng;        //記錄列數
+                          return(IDENTIFIER);                               //識別token為變數名稱
                       }
 ```
 
