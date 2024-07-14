@@ -66,4 +66,4 @@
 [Demo](https://youtu.be/hmFLkoay438)
 
 ## 參考資料
-[Lex&Yacc 使用教學]([https://www.example.com](https://zhuanlan.zhihu.com/p/143867739))
+- [Lex&Yacc 使用教學](https://zhuanlan.zhihu.com/p/143867739)
