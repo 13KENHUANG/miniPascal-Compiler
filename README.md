@@ -77,4 +77,6 @@
 ![This is an alt text.](minipascal.PNG)
 
 ## How to use this project?
+* 將要執行的Pascal源碼與Jasmin.jar 與 io.class放入assembly資料夾 *  
+* 根據Demo影片步驟即可編譯與執行代碼 *  
 [Demo](https://youtu.be/hmFLkoay438)
