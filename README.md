@@ -77,11 +77,11 @@ end.
 ```
 *經整理得出的AST tree如下：*    
 ![This is an alt text.](AST.png)
-*其中:  
-*ROUNTINEHEAD 為 程式主體屬性  
-*VAR          為 變數的宣告  
-*FUNCTION     為 函數的宣告  
-*LABEL        為 動作的行為，例如 賦值、IF statement、while statement等  
+*其中:*    
+* ROUNTINEHEAD 為 程式主體屬性  
+* VAR          為 變數的宣告  
+* FUNCTION     為 函數的宣告  
+* LABEL        為 動作的行為，例如 賦值、IF statement、while statement等  
 *-->屬性定義因人而異，可依自己喜好定義，本案其他相關屬性可參考typemap.h*  
 
 
