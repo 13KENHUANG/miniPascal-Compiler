@@ -76,7 +76,7 @@ begin
 end.
 ```
 *經整理得出的AST tree如下：*    
-![This is an alt text.](AST tree.PNG)
+![This is an alt text.](AST%20tree.PNG)
 
 ### 3.2.建立Symbol Table
 ### 3.3.實現語意分析邏輯
