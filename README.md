@@ -41,8 +41,8 @@
 *工具：使用C/C++實現*  
 *心得：此為筆者認為編譯器設計較複雜過程，並以下面三個階段[建立AsT Tree] [建立Symbol Table] [實現語意分析邏輯]做解析*    
 ### 3.1.建立AST Tree
-*Abstract Syntax Tree(抽象語法樹)，是編譯器和解釋器中使用的一種樹狀資料結構。
-在語法分析的過程中，利用tree結構紀錄每個走過的語法(參考parser.y)
+*Abstract Syntax Tree(抽象語法樹)，是編譯器和解釋器中使用的一種樹狀資料結構。*  
+*在語法分析的過程中，利用tree結構紀錄每個走過的語法(參考parser.y)*  
 ```
 //使用%type 指示符用於定義各種非終結符（non-terminal symbols）的類型
 %type <node> prog routine routine_head routine_part function_decl function_head parameters para_decl_list para_type_list
@@ -58,7 +58,7 @@ prog: PROGRAM IDENTIFIER LPAREN identifier_list_p RPAREN SEMICOLON
       }
       ;
 ```
-以實際Pascal代碼為例：
+*以實際Pascal代碼為例：*  
 ```
 program fibonacci_recursive(output);
 VAR a:integer;
@@ -75,7 +75,7 @@ begin
     writelnI(fa(a))
 end.
 ```
-經整理得出的AST tree如下：
+*經整理得出的AST tree如下：*    
 ![This is an alt text.](AST tree.png)
 
 ### 3.2.建立Symbol Table
