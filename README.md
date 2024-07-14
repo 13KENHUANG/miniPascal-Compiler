@@ -96,6 +96,8 @@ end.
 (5) bFind       -->確認是否存在該元素  
 
 ### 3.3.實現語意分析邏輯
+![This is an alt text.](Type_check.PNG)
+
 
 ## 4.目標代碼生成 (Target Code Generation)
 *目標：將抽象語法樹轉換為目標平台的代碼。*  
