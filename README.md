@@ -64,3 +64,6 @@
 * 將要執行的Pascal源碼與Jasmin.jar 與 io.class放入assembly資料夾 *  
 * 根據Demo影片步驟即可編譯與執行代碼 *  
 [Demo](https://youtu.be/hmFLkoay438)
+
+## 參考資料
+[Lex&Yacc 使用教學]([https://www.example.com](https://zhuanlan.zhihu.com/p/143867739))
