@@ -89,7 +89,7 @@ end.
 *符號表是一種數據結構。其主要功能用于存储有关程序中的标识符（如变量名、函数名、类名等）的信息。这些信息通常包括标识符的名称、类型、作用域、存储位置以及其他相关属性*  
 * 本專案symbol Table建立參考sbt_define.h，採用hash_map方式實現，unordered_map的key值為名稱，value值為結構體，其內容包含作用域、類型、宣告的行列值等    
 *主要實現功能有：*  
-(1)  SetParent  -->因函數內的變數與全域變數的symbol table是獨立的，因此利用此功能連結函數與全域變數的symbol table   
+(1) SetParent  -->因函數內的變數與全域變數的symbol table是獨立的，故此函數連結函數與全域變數的symbol table   
 (2) bHasParent  -->檢查是否有parent symbol table  
 (3) bHasParent  -->在symbol table內增加元素  
 (4) findSymbol  -->查找元素  
