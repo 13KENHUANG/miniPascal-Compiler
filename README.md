@@ -121,3 +121,4 @@ end.
 
 ## 參考資料
 - [Lex&Yacc 使用教學](https://zhuanlan.zhihu.com/p/143867739)
+- [pascal compiler --> x86 assembly](https://github.com/yinxiaojian/pascal-compiler/tree/master)
